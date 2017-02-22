@@ -11,6 +11,7 @@ import java.util.Objects;
 public abstract class AbstractEntity implements Persistable<Integer> {
 
     private Integer id;
+    private Boolean enabled;
     private int     version;
 
     @Override
@@ -23,6 +24,15 @@ public abstract class AbstractEntity implements Persistable<Integer> {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Column(name = "enabled")
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     @Version
@@ -65,6 +75,7 @@ public abstract class AbstractEntity implements Persistable<Integer> {
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("id",      getId())
+                .add("enabled", getEnabled())
                 .add("version", getVersion())
                 .toString();
     }

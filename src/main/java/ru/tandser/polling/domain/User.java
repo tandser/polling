@@ -15,7 +15,6 @@ public class User extends AbstractEntity {
     private String        password;
     private LocalDateTime created;
     private Role          role;
-    private Boolean       enabled;
 
     public enum Role implements GrantedAuthority {
         ADMIN, USER;
@@ -70,15 +69,6 @@ public class User extends AbstractEntity {
 
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    @Column(name = "enabled")
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
     }
 
     @Override
