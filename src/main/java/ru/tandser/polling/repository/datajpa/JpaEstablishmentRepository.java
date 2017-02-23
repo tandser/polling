@@ -11,9 +11,9 @@ public interface JpaEstablishmentRepository extends JpaRepository<Establishment,
 
     Establishment findOneByName(String name);
 
-    @EntityGraph(Establishment.WITH_MENUS)
+    @EntityGraph(Establishment.WITH_DETAILS)
     @Query("SELECT e FROM Establishment AS e WHERE e.id = ?1")
-    Establishment findOneWithMenus(int id);
+    Establishment findOneWithDetails(int id);
 
     @Transactional
     List<Establishment> removeById(int id);

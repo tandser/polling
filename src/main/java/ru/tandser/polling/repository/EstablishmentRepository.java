@@ -12,7 +12,7 @@ public interface EstablishmentRepository {
 
     Establishment getByName(String name);
 
-    Establishment getWithMenus(int id);
+    Establishment getWithDetails(int id);
 
     Establishment remove(int id);
 

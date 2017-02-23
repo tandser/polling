@@ -7,10 +7,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "establishments")
-@NamedEntityGraph(name = Establishment.WITH_MENUS, attributeNodes = @NamedAttributeNode("menus"))
+@NamedEntityGraph(name = Establishment.WITH_DETAILS, attributeNodes = @NamedAttributeNode("menus"))
 public class Establishment extends AbstractEntity {
 
-    public static final String WITH_MENUS = "Establishment.withMenus";
+    public static final String WITH_DETAILS = "Establishment.withDetails";
 
     private String     name;
     private String     address;

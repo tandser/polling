@@ -34,8 +34,8 @@ public class DataJpaEstablishmentRepositoryImpl implements EstablishmentReposito
     }
 
     @Override
-    public Establishment getWithMenus(int id) {
-        return establishmentRepository.findOneWithMenus(id);
+    public Establishment getWithDetails(int id) {
+        return establishmentRepository.findOneWithDetails(id);
     }
 
     @Override
