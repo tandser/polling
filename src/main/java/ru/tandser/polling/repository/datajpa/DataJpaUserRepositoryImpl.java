@@ -2,6 +2,7 @@ package ru.tandser.polling.repository.datajpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tandser.polling.domain.User;
 import ru.tandser.polling.repository.UserRepository;
 
@@ -19,36 +20,42 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
 
     @Override
     public User get(int id) {
-        return null;
+        return userRepository.findOne(id);
     }
 
     @Override
     public List<User> getAll() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
     public User getByEmail(String email) {
-        return null;
+        return userRepository.findOneByEmail(email);
     }
 
     @Override
     public User getWithVotes(int id) {
-        return null;
+        return userRepository.findOneWithVotes(id);
     }
 
     @Override
     public User remove(int id) {
-        return null;
+        List<User> result = userRepository.removeById(id);
+        return result.isEmpty() ? null : result.get(0);
     }
 
     @Override
+    @Transactional
     public User put(User user) {
-        return null;
+        if (!user.isNew() && get(user.getId()) == null) {
+            return null;
+        }
+
+        return userRepository.save(user);
     }
 
     @Override
     public int toggle(int id, boolean state) {
-        return 0;
+        return userRepository.setEnabled(id, state);
     }
 }
