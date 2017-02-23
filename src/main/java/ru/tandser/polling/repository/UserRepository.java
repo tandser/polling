@@ -12,7 +12,7 @@ public interface UserRepository {
 
     User getByEmail(String email);
 
-    User getWithVotes(int id);
+    User getWithDetails(int id);
 
     User remove(int id);
 

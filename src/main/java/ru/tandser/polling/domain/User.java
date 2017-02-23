@@ -8,10 +8,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-@NamedEntityGraph(name = User.WITH_VOTES, attributeNodes = @NamedAttributeNode("votes"))
+@NamedEntityGraph(name = User.WITH_DETAILS, attributeNodes = @NamedAttributeNode("votes"))
 public class User extends AbstractEntity {
 
-    public static final String WITH_VOTES = "User.withVotes";
+    public static final String WITH_DETAILS = "User.withDetails";
 
     private String        name;
     private String        email;

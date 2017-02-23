@@ -34,8 +34,8 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User getWithVotes(int id) {
-        return userRepository.findOneWithVotes(id);
+    public User getWithDetails(int id) {
+        return userRepository.findOneWithDetails(id);
     }
 
     @Override

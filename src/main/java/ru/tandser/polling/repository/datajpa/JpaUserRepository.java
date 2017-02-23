@@ -11,9 +11,9 @@ public interface JpaUserRepository extends JpaRepository<User, Integer> {
 
     User findOneByEmail(String email);
 
-    @EntityGraph(User.WITH_VOTES)
+    @EntityGraph(User.WITH_DETAILS)
     @Query("SELECT u FROM User AS u WHERE u.id = ?1")
-    User findOneWithVotes(int id);
+    User findOneWithDetails(int id);
 
     @Transactional
     List<User> removeById(int id);
