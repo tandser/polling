@@ -3,6 +3,7 @@ package ru.tandser.polling.domain;
 import com.google.common.base.MoreObjects;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "menus")
@@ -14,6 +15,7 @@ public class Menu extends AbstractEntity {
     private String        dessert;
     private Integer       price;
     private Establishment establishment;
+    private List<Vote>    votes;
 
     @Column(name = "appetizer")
     public String getAppetizer() {
@@ -68,6 +70,15 @@ public class Menu extends AbstractEntity {
 
     public void setEstablishment(Establishment establishment) {
         this.establishment = establishment;
+    }
+
+    @OneToMany(mappedBy = "menu")
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
     }
 
     @Override

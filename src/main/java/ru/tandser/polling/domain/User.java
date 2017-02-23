@@ -4,6 +4,7 @@ import com.google.common.base.MoreObjects;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -13,6 +14,7 @@ public class User extends AbstractEntity {
     private String        email;
     private String        password;
     private Role          role;
+    private List<Vote>    votes;
 
     public enum Role implements GrantedAuthority {
         ADMIN, USER;
@@ -58,6 +60,15 @@ public class User extends AbstractEntity {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    @OneToMany(mappedBy = "user")
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
     }
 
     @Override

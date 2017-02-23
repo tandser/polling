@@ -58,3 +58,19 @@ CREATE TABLE menus (
 );
 
 CREATE UNIQUE INDEX unique_menus ON menus (establishment_id);
+
+-------------------
+
+CREATE SEQUENCE seq_votes START 1;
+
+CREATE TABLE votes (
+  id               INTEGER   PRIMARY KEY DEFAULT nextval('seq_votes'),
+  menu_id          INTEGER   NOT NULL REFERENCES menus ON DELETE CASCADE,
+  user_id          INTEGER   NOT NULL REFERENCES users ON DELETE CASCADE,
+  rating           INTEGER   NOT NULL,
+  created          TIMESTAMP NOT NULL DEFAULT now(),
+  enabled          BOOLEAN   NOT NULL DEFAULT TRUE,
+  version          INTEGER   NOT NULL DEFAULT 0
+);
+
+CREATE UNIQUE INDEX unique_votes ON votes (menu_id, user_id);
