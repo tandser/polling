@@ -1,10 +1,12 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS menus;
 DROP TABLE IF EXISTS establishments;
+DROP TABLE IF EXISTS votes;
 
 DROP SEQUENCE IF EXISTS seq_users;
 DROP SEQUENCE IF EXISTS seq_menus;
 DROP SEQUENCE IF EXISTS seq_establishments;
+DROP SEQUENCE IF EXISTS seq_votes;
 
 -------------------
 
