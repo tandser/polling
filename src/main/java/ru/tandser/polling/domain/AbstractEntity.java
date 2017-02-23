@@ -5,14 +5,16 @@ import org.hibernate.Hibernate;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @MappedSuperclass
 public abstract class AbstractEntity implements Persistable<Integer> {
 
-    private Integer id;
-    private Boolean enabled;
-    private int     version;
+    private Integer       id;
+    private LocalDateTime created;
+    private Boolean       enabled;
+    private int           version;
 
     @Override
     @Id
@@ -24,6 +26,15 @@ public abstract class AbstractEntity implements Persistable<Integer> {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Column(name = "created")
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 
     @Column(name = "enabled")
@@ -75,6 +86,7 @@ public abstract class AbstractEntity implements Persistable<Integer> {
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("id",      getId())
+                .add("created", getCreated())
                 .add("enabled", getEnabled())
                 .add("version", getVersion())
                 .toString();

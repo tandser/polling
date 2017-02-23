@@ -4,7 +4,6 @@ import com.google.common.base.MoreObjects;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -13,7 +12,6 @@ public class User extends AbstractEntity {
     private String        name;
     private String        email;
     private String        password;
-    private LocalDateTime created;
     private Role          role;
 
     public enum Role implements GrantedAuthority {
@@ -52,15 +50,6 @@ public class User extends AbstractEntity {
         this.password = password;
     }
 
-    @Column(name = "created")
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     public Role getRole() {
@@ -77,8 +66,8 @@ public class User extends AbstractEntity {
                 .add("id",      getId())
                 .add("name",    getName())
                 .add("email",   getEmail())
-                .add("created", getCreated())
                 .add("role",    getRole())
+                .add("created", getCreated())
                 .add("enabled", getEnabled())
                 .add("version", getVersion())
                 .toString();

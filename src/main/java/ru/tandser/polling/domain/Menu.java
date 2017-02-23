@@ -2,18 +2,18 @@ package ru.tandser.polling.domain;
 
 import com.google.common.base.MoreObjects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "menus")
 public class Menu extends AbstractEntity {
 
-    private String appetizer;
-    private String entree;
-    private String beverage;
-    private String dessert;
+    private String        appetizer;
+    private String        entree;
+    private String        beverage;
+    private String        dessert;
+    private Integer       price;
+    private Establishment establishment;
 
     @Column(name = "appetizer")
     public String getAppetizer() {
@@ -51,6 +51,25 @@ public class Menu extends AbstractEntity {
         this.dessert = dessert;
     }
 
+    @Column(name = "price")
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "establishment_id")
+    public Establishment getEstablishment() {
+        return establishment;
+    }
+
+    public void setEstablishment(Establishment establishment) {
+        this.establishment = establishment;
+    }
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
@@ -59,6 +78,8 @@ public class Menu extends AbstractEntity {
                 .add("entree",    getEntree())
                 .add("beverage",  getBeverage())
                 .add("dessert",   getDessert())
+                .add("price",     getPrice())
+                .add("created",   getCreated())
                 .add("enabled",   getEnabled())
                 .add("version",   getVersion())
                 .toString();
