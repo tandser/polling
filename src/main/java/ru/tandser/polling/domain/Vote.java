@@ -4,6 +4,8 @@ import com.google.common.base.MoreObjects;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Table(name = "votes")
 public class Vote extends AbstractEntity {
@@ -12,7 +14,7 @@ public class Vote extends AbstractEntity {
     private User    user;
     private Integer rating;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "menu_id")
     public Menu getMenu() {
         return menu;
@@ -22,7 +24,7 @@ public class Vote extends AbstractEntity {
         this.menu = menu;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "user_id")
     public User getUser() {
         return user;

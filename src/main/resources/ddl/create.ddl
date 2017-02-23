@@ -57,7 +57,7 @@ CREATE TABLE menus (
   version          INTEGER   NOT NULL DEFAULT 0
 );
 
-CREATE UNIQUE INDEX unique_menus ON menus (establishment_id);
+CREATE UNIQUE INDEX unique_menus ON menus (establishment_id, created);
 
 -------------------
 
