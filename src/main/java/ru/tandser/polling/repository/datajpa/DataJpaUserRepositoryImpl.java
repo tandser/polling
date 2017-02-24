@@ -30,7 +30,7 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
 
     @Override
     public User getByEmail(String email) {
-        return userRepository.findOneByEmail(email);
+        return userRepository.findOneByEmailIgnoreCase(email);
     }
 
     @Override

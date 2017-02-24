@@ -9,7 +9,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 public interface JpaUserRepository extends JpaRepository<User, Integer> {
 
-    User findOneByEmail(String email);
+    User findOneByEmailIgnoreCase(String email);
 
     @EntityGraph(User.WITH_DETAILS)
     @Query("SELECT u FROM User AS u WHERE u.id = ?1")

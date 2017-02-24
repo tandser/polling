@@ -30,7 +30,7 @@ public class DataJpaEstablishmentRepositoryImpl implements EstablishmentReposito
 
     @Override
     public Establishment getByName(String name) {
-        return establishmentRepository.findOneByName(name);
+        return establishmentRepository.findOneByNameIgnoreCase(name);
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 public interface JpaEstablishmentRepository extends JpaRepository<Establishment, Integer> {
 
-    Establishment findOneByName(String name);
+    Establishment findOneByNameIgnoreCase(String name);
 
     @EntityGraph(Establishment.WITH_DETAILS)
     @Query("SELECT e FROM Establishment AS e WHERE e.id = ?1")

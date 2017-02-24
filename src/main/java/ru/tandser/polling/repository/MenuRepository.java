@@ -9,4 +9,6 @@ public interface MenuRepository {
     Menu get(int id);
 
     List<Menu> getAll();
+
+    List<Menu> getByEnabled(boolean enabled);
 }
