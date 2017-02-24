@@ -1,8 +1,11 @@
 package ru.tandser.polling.repository.datajpa;
 
+import com.google.common.collect.Lists;
+import com.querydsl.core.types.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import ru.tandser.polling.domain.QUser;
 import ru.tandser.polling.domain.User;
 import ru.tandser.polling.repository.UserRepository;
 
@@ -19,18 +22,13 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User get(int id) {
-        return userRepository.findOne(id);
+    public User get(Predicate predicate) {
+        return userRepository.findOne(predicate);
     }
 
     @Override
-    public List<User> getAll() {
-        return userRepository.findAll();
-    }
-
-    @Override
-    public User getByEmail(String email) {
-        return userRepository.findOneByEmailIgnoreCase(email);
+    public List<User> getAll(Predicate predicate) {
+        return Lists.newArrayList(userRepository.findAll(predicate));
     }
 
     @Override
@@ -47,7 +45,7 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
     @Override
     @Transactional
     public User put(User user) {
-        if (!user.isNew() && get(user.getId()) == null) {
+        if (!user.isNew() && get(QUser.user.id.eq(user.getId())) == null) {
             return null;
         }
 

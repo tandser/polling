@@ -1,16 +1,15 @@
 package ru.tandser.polling.repository;
 
+import com.querydsl.core.types.Predicate;
 import ru.tandser.polling.domain.User;
 
 import java.util.List;
 
 public interface UserRepository {
 
-    User get(int id);
+    User get(Predicate predicate);
 
-    List<User> getAll();
-
-    User getByEmail(String email);
+    List<User> getAll(Predicate predicate);
 
     User getWithDetails(int id);
 

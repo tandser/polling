@@ -4,15 +4,14 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tandser.polling.domain.User;
 
 import java.util.List;
 
 @Transactional(readOnly = true)
-public interface JpaUserRepository extends JpaRepository<User, Integer> {
-
-    User findOneByEmailIgnoreCase(String email);
+public interface JpaUserRepository extends JpaRepository<User, Integer>, QueryDslPredicateExecutor<User> {
 
     @EntityGraph(User.WITH_DETAILS)
     @Query("SELECT u FROM User AS u WHERE u.id = ?1")
