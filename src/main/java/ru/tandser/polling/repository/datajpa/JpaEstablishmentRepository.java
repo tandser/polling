@@ -11,6 +11,8 @@ public interface JpaEstablishmentRepository extends JpaRepository<Establishment,
 
     Establishment findOneByNameIgnoreCase(String name);
 
+    List<Establishment> findByEnabled(boolean state);
+
     @EntityGraph(Establishment.WITH_DETAILS)
     @Query("SELECT e FROM Establishment AS e WHERE e.id = ?1")
     Establishment findOneWithDetails(int id);

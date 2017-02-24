@@ -19,4 +19,7 @@ INSERT INTO establishments (name, address, phone, website) VALUES
   ('Ai Fiori',  '400 5th Ave #2, New York, NY 10018',     '+1 212-613-8660', 'http://aifiorinyc.com');
 
 INSERT INTO menus (appetizer, entree, beverage, dessert, price, establishment_id) VALUES
-  ('Corned Beef Tongue', 'Cod En Papillote', 'Fresh Squeezed Juice', 'Meyer Lemon Meringue Pie', 7800, 1);
+  ('Corned beef tongue', 'Cod en papillote', 'Fresh squeezed juice',        'Meyer lemon meringue pie', 7800, 1),
+  ('Seared tuna salad',  'Pot of mussels',   'Organic strawberry lemonade', 'Caramelized apple pie',    7200, 2),
+  ('Baccala',            'Tagliolini',       'Sweet greens and lemon',      'Bomboloni',                6800, 3),
+  ('Crudo di passera',   'Pollo arrosto',    'Green juice',                 'Gelati',                   7000, 4);

@@ -12,6 +12,8 @@ public interface EstablishmentRepository {
 
     Establishment getByName(String name);
 
+    List<Establishment> getByEnabled(boolean state);
+
     Establishment getWithDetails(int id);
 
     Establishment remove(int id);

@@ -34,6 +34,11 @@ public class DataJpaEstablishmentRepositoryImpl implements EstablishmentReposito
     }
 
     @Override
+    public List<Establishment> getByEnabled(boolean state) {
+        return establishmentRepository.findByEnabled(state);
+    }
+
+    @Override
     public Establishment getWithDetails(int id) {
         return establishmentRepository.findOneWithDetails(id);
     }
