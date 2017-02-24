@@ -68,6 +68,7 @@ public class Establishment extends AbstractEntity {
         return MoreObjects.toStringHelper(this)
                 .add("id",      getId())
                 .add("name",    getName())
+                .add("address", getAddress())
                 .add("phone",   getPhone())
                 .add("website", getWebsite())
                 .add("created", getCreated())
