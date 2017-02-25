@@ -4,8 +4,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
-import ru.tandser.polling.domain.QUser;
-import ru.tandser.polling.domain.User;
 import ru.tandser.polling.repository.AbstractRepositoryTest;
 import ru.tandser.polling.repository.UserRepository;
 
