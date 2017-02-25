@@ -18,6 +18,7 @@ public class EstablishmentTestData {
     public static Establishment newEstablishment;
     public static Establishment updatedEstablishment;
     public static Establishment nonExistentEstablishment;
+    public static Establishment conflictedEstablishment;
 
     public static final Matcher<Establishment> ESTABLISHMENT_MATCHER = new Matcher<>(Establishment.class, (expected, actual) ->
             expected == actual || (Objects.equals(expected.getName(),    actual.getName())    &&
@@ -38,5 +39,6 @@ public class EstablishmentTestData {
         newEstablishment         = mocks.next();
         updatedEstablishment     = mocks.next();
         nonExistentEstablishment = mocks.next();
+        conflictedEstablishment  = mocks.next();
     }
 }

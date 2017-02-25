@@ -40,6 +40,7 @@
     "address" : "42 E 20th St, New York, NY 10003",
     "phone"   : "+1 212-477-0777",
     "website" : "http://www.gramercytavern.com",
+    "created" : "2017-02-05T14:00",
     "enabled" : true
   },
 
@@ -59,6 +60,18 @@
     "address" : "100 E 63rd St, New York, NY 10065",
     "phone"   : "+1 646-869-2300",
     "website" : "http://vauclusenyc.com",
+    "created" : "2017-02-05T14:00",
     "enabled" : true
+  },
+
+  {
+    "id"      : 1,
+    "name"    : "Dovetail",
+    "address" : "103 W 77th St, New York, NY 10024",
+    "phone"   : "+1 212-362-3800",
+    "website" : "http://www.dovetailnyc.com",
+    "created" : "2017-02-05T14:00",
+    "enabled" : true,
+    "version" : 1
   }
 ]
