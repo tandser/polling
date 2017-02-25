@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.tandser.polling.repository.AbstractRepositoryTest;
 import ru.tandser.polling.repository.EstablishmentRepository;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static ru.tandser.polling.EstablishmentTestData.*;
 import static ru.tandser.polling.repository.predicate.EstablishmentPredicates.whereId;
@@ -20,6 +21,8 @@ public class DataJpaEstablishmentRepositoryTest extends AbstractRepositoryTest {
 
     @Test
     public void testGet() {
+        assertNull(establishmentRepository.get(whereId(nonExistentEstablishment.getId())));
+
         assertTrue(ESTABLISHMENT_MATCHER.equals(establishment1, establishmentRepository.get(whereId(establishment1.getId()))));
         assertTrue(ESTABLISHMENT_MATCHER.equals(establishment2, establishmentRepository.get(whereId(establishment2.getId()))));
         assertTrue(ESTABLISHMENT_MATCHER.equals(establishment3, establishmentRepository.get(whereId(establishment3.getId()))));
