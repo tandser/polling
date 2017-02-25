@@ -1,6 +1,7 @@
 package ru.tandser.polling.domain;
 
 import com.google.common.base.MoreObjects;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -28,6 +29,7 @@ public class User extends AbstractEntity {
         }
     }
 
+    @NotBlank
     @Column(name = "name")
     public String getName() {
         return name;
