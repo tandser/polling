@@ -1,0 +1,37 @@
+[
+  {
+    "id"      : 1,
+    "name"    : "Dovetail",
+    "address" : "103 W 77th St, New York, NY 10024",
+    "phone"   : "+1 212-362-3800",
+    "website" : "http://www.dovetailnyc.com",
+    "enabled" : true
+  },
+
+  {
+    "id"      : 2,
+    "name"    : "The Smith",
+    "address" : "1900 Broadway, New York, NY 10023",
+    "phone"   : "+1 212-496-5700",
+    "website" : "http://thesmithrestaurant.com",
+    "enabled" : true
+  },
+
+  {
+    "id"      : 3,
+    "name"    : "Marea",
+    "address" : "240 Central Park S, New York, NY 10019",
+    "phone"   : "+1 212-582-5100",
+    "website" : "http://www.marea-nyc.com",
+    "enabled" : true
+  },
+
+  {
+    "id"      : 4,
+    "name"    : "Ai Fiori",
+    "address" : "400 5th Ave #2, New York, NY 10018",
+    "phone"   : "+1 212-613-8660",
+    "website" : "http://aifiorinyc.com",
+    "enabled" : true
+  }
+]

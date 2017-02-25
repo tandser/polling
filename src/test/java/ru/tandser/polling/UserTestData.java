@@ -1,12 +1,13 @@
 package ru.tandser.polling;
 
-import org.springframework.util.ResourceUtils;
 import ru.tandser.polling.domain.User;
 import ru.tandser.polling.util.Matcher;
 import ru.tandser.polling.web.json.JsonConverter;
 
 import java.util.Iterator;
 import java.util.Objects;
+
+import static org.springframework.util.ResourceUtils.getFile;
 
 public class UserTestData {
 
@@ -27,7 +28,7 @@ public class UserTestData {
     private UserTestData() {}
 
     public static void loadMocks() throws Exception {
-        Iterator<User> mocks = JsonConverter.fromJsonToList(ResourceUtils.getFile("classpath:mock/users.json"), User.class).iterator();
+        Iterator<User> mocks = JsonConverter.fromJsonToList(getFile("classpath:mock/users.json"), User.class).iterator();
 
         admin           = mocks.next();
         user            = mocks.next();

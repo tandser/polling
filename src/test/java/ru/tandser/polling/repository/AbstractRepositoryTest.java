@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ru.tandser.polling.EstablishmentTestData;
 import ru.tandser.polling.UserTestData;
 
 @ActiveProfiles("localhost")
@@ -23,5 +24,6 @@ public abstract class AbstractRepositoryTest {
     @BeforeClass
     public static void beforeClass() throws Exception {
         UserTestData.loadMocks();
+        EstablishmentTestData.loadMocks();
     }
 }

@@ -1,10 +1,13 @@
 package ru.tandser.polling.domain;
 
 import com.google.common.base.MoreObjects;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -39,6 +42,8 @@ public class User extends AbstractEntity {
         this.name = name;
     }
 
+    @NotBlank
+    @Email
     @Column(name = "email")
     public String getEmail() {
         return email;
@@ -48,6 +53,8 @@ public class User extends AbstractEntity {
         this.email = email;
     }
 
+    @NotNull
+    @Length(min = 7)
     @Column(name = "password")
     public String getPassword() {
         return password;
