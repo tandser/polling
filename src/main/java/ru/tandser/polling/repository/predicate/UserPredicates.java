@@ -12,6 +12,8 @@ public class UserPredicates {
     }
 
     public static Predicate whereEmail(String email) {
-        return QUser.user.email.equalsIgnoreCase(email);
+        return email != null
+                ? QUser.user.email.equalsIgnoreCase(email)
+                : null;
     }
 }

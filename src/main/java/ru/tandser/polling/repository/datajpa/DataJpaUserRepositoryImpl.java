@@ -5,11 +5,12 @@ import com.querydsl.core.types.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.tandser.polling.domain.QUser;
 import ru.tandser.polling.domain.User;
 import ru.tandser.polling.repository.UserRepository;
 
 import java.util.List;
+
+import static ru.tandser.polling.repository.predicate.UserPredicates.whereId;
 
 @Repository
 public class DataJpaUserRepositoryImpl implements UserRepository {
@@ -23,7 +24,9 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
 
     @Override
     public User get(Predicate predicate) {
-        return userRepository.findOne(predicate);
+        return predicate != null
+                ? userRepository.findOne(predicate)
+                : null;
     }
 
     @Override
@@ -45,7 +48,7 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
     @Override
     @Transactional
     public User put(User user) {
-        if (!user.isNew() && get(QUser.user.id.eq(user.getId())) == null) {
+        if (!user.isNew() && get(whereId(user.getId())) == null) {
             return null;
         }
 
