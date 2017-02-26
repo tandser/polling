@@ -7,9 +7,11 @@ import ru.tandser.polling.repository.AbstractRepositoryTest;
 import ru.tandser.polling.repository.EstablishmentRepository;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.Assert.*;
 import static ru.tandser.polling.EstablishmentTestData.*;
+import static ru.tandser.polling.MenuTestData.*;
 import static ru.tandser.polling.repository.predicate.EstablishmentPredicates.whereId;
 
 public class DataJpaEstablishmentRepositoryTest extends AbstractRepositoryTest {
@@ -38,7 +40,10 @@ public class DataJpaEstablishmentRepositoryTest extends AbstractRepositoryTest {
 
     @Test
     public void testGetWithDetails() {
-        // TODO: дополнить после того, как появится matcher для Menu
+        assertTrue(MENU_MATCHER.equals(Collections.singletonList(menu1), establishmentRepository.getWithDetails(establishment1.getId()).getMenus()));
+        assertTrue(MENU_MATCHER.equals(Collections.singletonList(menu2), establishmentRepository.getWithDetails(establishment2.getId()).getMenus()));
+        assertTrue(MENU_MATCHER.equals(Collections.singletonList(menu3), establishmentRepository.getWithDetails(establishment3.getId()).getMenus()));
+        assertTrue(MENU_MATCHER.equals(Collections.singletonList(menu4), establishmentRepository.getWithDetails(establishment4.getId()).getMenus()));
     }
 
     @Test
