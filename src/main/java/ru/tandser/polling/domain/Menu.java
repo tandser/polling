@@ -1,5 +1,8 @@
 package ru.tandser.polling.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,6 +12,7 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Table(name = "menus")
 @NamedEntityGraph(name = Menu.WITH_DETAILS, attributeNodes = {@NamedAttributeNode("establishment"), @NamedAttributeNode("votes")})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Menu.class)
 public class Menu extends AbstractEntity {
 
     public static final String WITH_DETAILS = "Menu.withDetails";

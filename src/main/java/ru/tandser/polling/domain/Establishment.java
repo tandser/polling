@@ -1,5 +1,7 @@
 package ru.tandser.polling.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 
@@ -11,6 +13,7 @@ import static com.google.common.base.MoreObjects.toStringHelper;
 @Entity
 @Table(name = "establishments")
 @NamedEntityGraph(name = Establishment.WITH_DETAILS, attributeNodes = @NamedAttributeNode("menus"))
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Establishment.class)
 public class Establishment extends AbstractEntity {
 
     public static final String WITH_DETAILS = "Establishment.withDetails";
