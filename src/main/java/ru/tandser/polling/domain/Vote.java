@@ -7,7 +7,10 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Table(name = "votes")
+@NamedEntityGraph(name = Vote.WITH_DETAILS, attributeNodes = {@NamedAttributeNode("menu"), @NamedAttributeNode("user")})
 public class Vote extends AbstractEntity {
+
+    public static final String WITH_DETAILS = "Vote.withDetails";
 
     private Menu    menu;
     private User    user;
