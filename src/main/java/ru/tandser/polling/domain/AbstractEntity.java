@@ -1,12 +1,13 @@
 package ru.tandser.polling.domain;
 
-import com.google.common.base.MoreObjects;
 import org.hibernate.Hibernate;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
+
+import static com.google.common.base.MoreObjects.toStringHelper;
 
 @MappedSuperclass
 public abstract class AbstractEntity implements Persistable<Integer> {
@@ -84,7 +85,7 @@ public abstract class AbstractEntity implements Persistable<Integer> {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
+        return toStringHelper(this)
                 .add("id",      getId())
                 .add("created", getCreated())
                 .add("enabled", getEnabled())

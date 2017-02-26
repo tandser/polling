@@ -1,6 +1,5 @@
 package ru.tandser.polling.repository.datajpa;
 
-import com.google.common.collect.Lists;
 import com.querydsl.core.types.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,6 +9,7 @@ import ru.tandser.polling.repository.EstablishmentRepository;
 
 import java.util.List;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static ru.tandser.polling.repository.predicate.EstablishmentPredicates.whereId;
 
 @Repository
@@ -31,7 +31,7 @@ public class DataJpaEstablishmentRepositoryImpl implements EstablishmentReposito
 
     @Override
     public List<Establishment> getAll(Predicate predicate) {
-        return Lists.newArrayList(establishmentRepository.findAll(predicate));
+        return newArrayList(establishmentRepository.findAll(predicate));
     }
 
     @Override

@@ -1,6 +1,5 @@
 package ru.tandser.polling.repository.datajpa;
 
-import com.google.common.collect.Lists;
 import com.querydsl.core.types.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,6 +9,7 @@ import ru.tandser.polling.repository.UserRepository;
 
 import java.util.List;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static ru.tandser.polling.repository.predicate.UserPredicates.whereId;
 
 @Repository
@@ -31,7 +31,7 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> getAll(Predicate predicate) {
-        return Lists.newArrayList(userRepository.findAll(predicate));
+        return newArrayList(userRepository.findAll(predicate));
     }
 
     @Override

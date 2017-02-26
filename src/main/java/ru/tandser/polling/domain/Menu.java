@@ -1,10 +1,9 @@
 package ru.tandser.polling.domain;
 
-import com.google.common.base.MoreObjects;
-
 import javax.persistence.*;
 import java.util.List;
 
+import static com.google.common.base.MoreObjects.toStringHelper;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
@@ -88,7 +87,7 @@ public class Menu extends AbstractEntity {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
+        return toStringHelper(this)
                 .add("id",        getId())
                 .add("appetizer", getAppetizer())
                 .add("entree",    getEntree())

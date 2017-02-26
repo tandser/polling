@@ -1,9 +1,8 @@
 package ru.tandser.polling.domain;
 
-import com.google.common.base.MoreObjects;
-
 import javax.persistence.*;
 
+import static com.google.common.base.MoreObjects.toStringHelper;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
@@ -45,7 +44,7 @@ public class Vote extends AbstractEntity {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
+        return toStringHelper(this)
                 .add("id",      getId())
                 .add("rating",  getRating())
                 .add("created", getCreated())

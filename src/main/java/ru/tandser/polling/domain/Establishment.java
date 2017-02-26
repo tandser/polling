@@ -1,9 +1,12 @@
 package ru.tandser.polling.domain;
 
-import com.google.common.base.MoreObjects;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import java.util.List;
+
+import static com.google.common.base.MoreObjects.toStringHelper;
 
 @Entity
 @Table(name = "establishments")
@@ -18,6 +21,7 @@ public class Establishment extends AbstractEntity {
     private String     website;
     private List<Menu> menus;
 
+    @NotBlank
     @Column(name = "name")
     public String getName() {
         return name;
@@ -27,6 +31,7 @@ public class Establishment extends AbstractEntity {
         this.name = name;
     }
 
+    @NotBlank
     @Column(name = "address")
     public String getAddress() {
         return address;
@@ -36,6 +41,7 @@ public class Establishment extends AbstractEntity {
         this.address = address;
     }
 
+    @NotBlank
     @Column(name = "phone")
     public String getPhone() {
         return phone;
@@ -45,6 +51,7 @@ public class Establishment extends AbstractEntity {
         this.phone = phone;
     }
 
+    @URL
     @Column(name = "website")
     public String getWebsite() {
         return website;
@@ -65,7 +72,7 @@ public class Establishment extends AbstractEntity {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
+        return toStringHelper(this)
                 .add("id",      getId())
                 .add("name",    getName())
                 .add("address", getAddress())
