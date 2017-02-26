@@ -8,8 +8,7 @@ import ru.tandser.polling.repository.MenuRepository;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static ru.tandser.polling.MenuTestData.*;
 import static ru.tandser.polling.repository.predicate.MenuPredicates.whereId;
 
@@ -66,5 +65,16 @@ public class DataJpaMenuRepositoryTest extends AbstractRepositoryTest {
     public void testPutConflictedMenu() {
         thrown.expect(ObjectOptimisticLockingFailureException.class);
         menuRepository.put(conflictedMenu);
+    }
+
+    @Test
+    public void testToggle() {
+        assertEquals(0, menuRepository.toggle(nonExistentMenu.getId(), false));
+
+        assertEquals(1, menuRepository.toggle(menu1.getId(), false));
+        assertFalse(menuRepository.get(whereId(menu1.getId())).getEnabled());
+
+        assertEquals(1, menuRepository.toggle(menu1.getId(), true));
+        assertTrue(menuRepository.get(whereId(menu1.getId())).getEnabled());
     }
 }
