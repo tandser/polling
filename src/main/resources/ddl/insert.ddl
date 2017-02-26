@@ -23,3 +23,9 @@ INSERT INTO menus (appetizer, entree, beverage, dessert, price, establishment_id
   ('Seared tuna salad',  'Pot of mussels',   'Organic strawberry lemonade', 'Caramelized apple pie',    7200, 2),
   ('Baccala',            'Tagliolini',       'Sweet greens and lemon',      'Bomboloni',                6800, 3),
   ('Crudo di passera',   'Pollo arrosto',    'Green juice',                 'Gelati',                   7000, 4);
+
+INSERT INTO votes (menu_id, user_id, rating) VALUES
+  (1, 2, 1),
+  (2, 2, 2),
+  (3, 2, 3),
+  (4, 2, 4);

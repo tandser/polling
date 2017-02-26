@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
 import static javax.persistence.FetchType.LAZY;
@@ -20,6 +21,7 @@ public class Vote extends AbstractEntity {
     private User    user;
     private Integer rating;
 
+    @NotNull
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "menu_id")
     public Menu getMenu() {
@@ -30,6 +32,7 @@ public class Vote extends AbstractEntity {
         this.menu = menu;
     }
 
+    @NotNull
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "user_id")
     public User getUser() {

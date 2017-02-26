@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
@@ -70,6 +71,7 @@ public class Menu extends AbstractEntity {
         this.price = price;
     }
 
+    @NotNull
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "establishment_id")
     public Establishment getEstablishment() {
