@@ -2,14 +2,15 @@ package ru.tandser.polling.repository.datajpa;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import ru.tandser.polling.domain.Vote;
 import ru.tandser.polling.repository.AbstractRepositoryTest;
 import ru.tandser.polling.repository.VoteRepository;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static ru.tandser.polling.MenuTestData.MENU_MATCHER;
 import static ru.tandser.polling.MenuTestData.menu1;
 import static ru.tandser.polling.UserTestData.USER_MATCHER;
@@ -67,5 +68,26 @@ public class DataJpaVoteRepositoryTest extends AbstractRepositoryTest {
         assertTrue(VOTE_MATCHER.equals(updatedVote, voteRepository.get(whereId(updatedVote.getId()))));
     }
 
+    @Test
+    public void testPutConflictedVote() {
+        thrown.expect(ObjectOptimisticLockingFailureException.class);
+        voteRepository.put(conflictedVote);
+    }
 
+    @Test
+    public void testPutDuplicatedVote() {
+        thrown.expect(DataIntegrityViolationException.class);
+        voteRepository.put(duplicatedVote);
+    }
+
+    @Test
+    public void testToggle() {
+        assertEquals(0, voteRepository.toggle(nonExistentVote.getId(), false));
+
+        assertEquals(1, voteRepository.toggle(vote1.getId(), false));
+        assertFalse(voteRepository.get(whereId(vote1.getId())).getEnabled());
+
+        assertEquals(1, voteRepository.toggle(vote1.getId(), true));
+        assertTrue(voteRepository.get(whereId(vote1.getId())).getEnabled());
+    }
 }

@@ -18,6 +18,8 @@ public class VoteTestData {
     public static Vote newVote         = new Vote(null, menu4, user, 4, now(), TRUE, 0);
     public static Vote updatedVote     = new Vote(1,    menu1, user, 2, now(), TRUE, 0);
     public static Vote nonExistentVote = new Vote(0,    menu1, user, 5, null,  TRUE, 0);
+    public static Vote conflictedVote  = new Vote(2,    menu2, user, 3, now(), TRUE, 1);
+    public static Vote duplicatedVote  = new Vote(null, menu1, user, 1, now(), TRUE, 0);
 
     public static final Matcher<Vote> VOTE_MATCHER = new Matcher<>(Vote.class, (expected, actual) ->
             expected == actual || (Objects.equals(expected.getRating(),  actual.getRating())  &&
