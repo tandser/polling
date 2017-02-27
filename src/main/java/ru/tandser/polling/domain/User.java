@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -100,6 +101,15 @@ public class User extends AbstractEntity {
 
     public void setVotes(List<Vote> votes) {
         this.votes = votes;
+    }
+
+    public void prepare(PasswordEncoder passwordEncoder) {
+        setEmail(getEmail().toLowerCase());
+        setPassword(passwordEncoder.encode(getPassword()));
+
+        if (getRole()    == null) setRole(Role.USER);
+        if (getCreated() == null) setCreated(LocalDateTime.now());
+        if (getEnabled() == null) setEnabled(Boolean.TRUE);
     }
 
     @Override

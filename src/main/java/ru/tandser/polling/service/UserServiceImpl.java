@@ -13,6 +13,9 @@ import ru.tandser.polling.web.Principal;
 import java.util.List;
 
 import static ru.tandser.polling.repository.predicate.UserPredicates.whereEmail;
+import static ru.tandser.polling.repository.predicate.UserPredicates.whereId;
+import static ru.tandser.polling.util.Inspector.requireExist;
+import static ru.tandser.polling.util.Inspector.requireUpdate;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
@@ -32,37 +35,39 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User get(int id) {
-        return null;
+        return requireExist(userRepository.get(whereId(id)));
     }
 
     @Override
     public List<User> getAll() {
-        return null;
+        return userRepository.getAll(null);
     }
 
     @Override
     public User getWithDetails(int id) {
-        return null;
+        return requireExist(userRepository.getWithDetails(id));
     }
 
     @Override
     public void remove(int id) {
-
+        requireExist(userRepository.remove(id));
     }
 
     @Override
     public User save(User user) {
-        return null;
+        user.prepare(passwordEncoder);
+        return userRepository.put(user);
     }
 
     @Override
     public void update(User user) {
-
+        user.prepare(passwordEncoder);
+        requireExist(userRepository.put(user));
     }
 
     @Override
     public void toggle(int id, boolean state) {
-
+        requireUpdate(userRepository.toggle(id, state));
     }
 
     @Override
