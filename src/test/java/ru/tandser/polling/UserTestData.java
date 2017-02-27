@@ -16,7 +16,7 @@ public class UserTestData {
     public static User user            = new User(2,    "Scott Welch",  "s.welch@gmail.com",   "Izhyw29", USER,  null, null,  TRUE, 0);
     public static User newUser         = new User(null, "Ralph Bass",   "r.bass@gmail.com",    "9Mn5Z6x", USER,  null, now(), TRUE, 0);
     public static User updatedUser     = new User(2,    "Scott Welch",  "s.welch@gmail.com",   "k58NwVe", USER,  null, now(), TRUE, 0);
-    public static User nonExistentUser = new User(3,    "Arnold Shaw",  "a.shaw@gmail.com",    "gVw4WrY", USER,  null, null,  TRUE, 0);
+    public static User nonExistentUser = new User(0,    "Arnold Shaw",  "a.shaw@gmail.com",    "gVw4WrY", USER,  null, null,  TRUE, 0);
     public static User conflictedUser  = new User(1,    "Lynn Douglas", "l.douglas@gmail.com", "bEW9feW", ADMIN, null, now(), TRUE, 1);
     public static User duplicatedUser  = new User(null, "Steven Welch", "s.welch@gmail.com",   "Y9rpqov", USER,  null, now(), TRUE, 0);
 

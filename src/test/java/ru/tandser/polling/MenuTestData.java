@@ -17,7 +17,7 @@ public class MenuTestData {
     public static Menu menu4           = new Menu(4,    "Crudo di passera",   "Pollo arrosto",     "Green juice",                 "Gelati",                     7000, establishment4, null, null,  TRUE, 0);
     public static Menu newMenu         = new Menu(null, "Chicken salad",      "Grilled swordfish", "Banana ginger smoothie",      "Sticky toffee parsnip cake", 7900, establishment1, null, now(), TRUE, 0);
     public static Menu updatedMenu     = new Menu(1,    "Corned beef tongue", "Cod en papillote",  "Fresh squeezed juice",        "Meyer lemon meringue pie",   7700, establishment1, null, now(), TRUE, 0);
-    public static Menu nonExistentMenu = new Menu(5,    "Salade verte",       "Spaghetti",         "Orange juice",                "Tarte vaucluse",             6700, establishment1, null, now(), TRUE, 0);
+    public static Menu nonExistentMenu = new Menu(0,    "Salade verte",       "Spaghetti",         "Orange juice",                "Tarte vaucluse",             6700, establishment1, null, null,  TRUE, 0);
     public static Menu conflictedMenu  = new Menu(2,    "Seared tuna salad",  "Pot of mussels",    "Organic strawberry lemonade", "Caramelized apple pie",      7400, establishment2, null, now(), TRUE, 1);
 
     public static final Matcher<Menu> MENU_MATCHER = new Matcher<>(Menu.class, (expected, actual) ->

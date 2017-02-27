@@ -27,5 +27,4 @@ INSERT INTO menus (appetizer, entree, beverage, dessert, price, establishment_id
 INSERT INTO votes (menu_id, user_id, rating) VALUES
   (1, 2, 1),
   (2, 2, 2),
-  (3, 2, 3),
-  (4, 2, 4);
+  (3, 2, 3);
