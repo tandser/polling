@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import java.time.LocalDateTime;
+
 import static com.google.common.base.MoreObjects.toStringHelper;
 import static javax.persistence.FetchType.LAZY;
 
@@ -20,6 +22,18 @@ public class Vote extends AbstractEntity {
     private Menu    menu;
     private User    user;
     private Integer rating;
+
+    public Vote() {}
+
+    public Vote(Integer id, Menu menu, User user, Integer rating, LocalDateTime created, Boolean enabled, int version) {
+        this.id       = id;
+        this.menu     = menu;
+        this.user     = user;
+        this.rating   = rating;
+        this.created  = created;
+        this.enabled  = enabled;
+        this.version  = version;
+    }
 
     @NotNull
     @ManyToOne(fetch = LAZY)
