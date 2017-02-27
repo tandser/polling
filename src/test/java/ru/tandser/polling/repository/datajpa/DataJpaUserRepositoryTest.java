@@ -12,6 +12,7 @@ import java.util.Collections;
 
 import static org.junit.Assert.*;
 import static ru.tandser.polling.UserTestData.*;
+import static ru.tandser.polling.VoteTestData.*;
 import static ru.tandser.polling.repository.predicate.UserPredicates.whereEmail;
 import static ru.tandser.polling.repository.predicate.UserPredicates.whereId;
 
@@ -42,7 +43,7 @@ public class DataJpaUserRepositoryTest extends AbstractRepositoryTest {
 
     @Test
     public void testGetWithDetails() {
-        // TODO: дополнить после того, как появится matcher для Vote
+        assertTrue(VOTE_MATCHER.equals(Arrays.asList(vote1, vote2, vote3), userRepository.getWithDetails(user.getId()).getVotes()));
     }
 
     @Test
