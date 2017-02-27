@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
@@ -23,6 +24,20 @@ public class Establishment extends AbstractEntity {
     private String     phone;
     private String     website;
     private List<Menu> menus;
+
+    public Establishment() {}
+
+    public Establishment(Integer id, String name, String address, String phone, String website, List<Menu> menus, LocalDateTime created, Boolean enabled, int version) {
+        this.id       = id;
+        this.name     = name;
+        this.address  = address;
+        this.phone    = phone;
+        this.website  = website;
+        this.menus    = menus;
+        this.created  = created;
+        this.enabled  = enabled;
+        this.version  = version;
+    }
 
     @NotBlank
     @Column(name = "name")

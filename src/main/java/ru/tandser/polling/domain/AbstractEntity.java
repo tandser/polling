@@ -12,10 +12,10 @@ import static com.google.common.base.MoreObjects.toStringHelper;
 @MappedSuperclass
 public abstract class AbstractEntity implements Persistable<Integer> {
 
-    private Integer       id;
-    private LocalDateTime created;
-    private Boolean       enabled;
-    private int           version;
+    protected Integer       id;
+    protected LocalDateTime created;
+    protected Boolean       enabled;
+    protected int           version;
 
     @Override
     @Id

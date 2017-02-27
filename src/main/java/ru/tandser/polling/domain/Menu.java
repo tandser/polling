@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
@@ -25,6 +26,22 @@ public class Menu extends AbstractEntity {
     private Integer       price;
     private Establishment establishment;
     private List<Vote>    votes;
+
+    public Menu() {}
+
+    public Menu(Integer id, String appetizer, String entree, String beverage, String dessert, Integer price, Establishment establishment, List<Vote> votes, LocalDateTime created, Boolean enabled, int version) {
+        this.id            = id;
+        this.appetizer     = appetizer;
+        this.entree        = entree;
+        this.beverage      = beverage;
+        this.dessert       = dessert;
+        this.price         = price;
+        this.establishment = establishment;
+        this.votes         = votes;
+        this.created       = created;
+        this.enabled       = enabled;
+        this.version       = version;
+    }
 
     @Column(name = "appetizer")
     public String getAppetizer() {

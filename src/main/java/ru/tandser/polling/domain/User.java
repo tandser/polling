@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
@@ -34,6 +35,20 @@ public class User extends AbstractEntity {
         public String getAuthority() {
             return "ROLE_" + name();
         }
+    }
+
+    public User() {}
+
+    public User(Integer id, String name, String email, String password, Role role, List<Vote> votes, LocalDateTime created, Boolean enabled, int version) {
+        this.id       = id;
+        this.name     = name;
+        this.email    = email;
+        this.password = password;
+        this.role     = role;
+        this.votes    = votes;
+        this.created  = created;
+        this.enabled  = enabled;
+        this.version  = version;
     }
 
     @NotBlank
