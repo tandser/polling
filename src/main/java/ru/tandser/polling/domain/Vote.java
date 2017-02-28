@@ -1,12 +1,14 @@
 package ru.tandser.polling.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
 import static com.google.common.base.MoreObjects.toStringHelper;
 import static javax.persistence.FetchType.LAZY;
 
@@ -34,6 +36,7 @@ public class Vote extends AbstractEntity {
         this.version  = version;
     }
 
+    @JsonInclude(NON_EMPTY)
     @NotNull
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "menu_id")
