@@ -1,4 +1,4 @@
-package ru.tandser.polling.web.exc;
+package ru.tandser.polling.web.controller.advice;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +8,7 @@ import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.web.bind.annotation.*;
 import ru.tandser.polling.service.exc.NotFoundException;
 import ru.tandser.polling.web.Principal;
+import ru.tandser.polling.web.exc.BadRequestException;
 
 import javax.servlet.http.HttpServletRequest;
 

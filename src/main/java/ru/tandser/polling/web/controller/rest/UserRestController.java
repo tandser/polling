@@ -1,4 +1,4 @@
-package ru.tandser.polling.web.rest;
+package ru.tandser.polling.web.controller.rest;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
