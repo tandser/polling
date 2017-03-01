@@ -1,6 +1,7 @@
 package ru.tandser.polling.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
 import static com.google.common.base.MoreObjects.toStringHelper;
 
 @Entity
@@ -79,6 +81,7 @@ public class Establishment extends AbstractEntity {
         this.website = website;
     }
 
+    @JsonInclude(NON_EMPTY)
     @OneToMany(mappedBy = "establishment")
     public List<Menu> getMenus() {
         return menus;

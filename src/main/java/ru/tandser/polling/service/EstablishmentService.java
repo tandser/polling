@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface EstablishmentService {
 
-    Object get(int id);
+    Establishment get(int id);
 
     List<Establishment> getAll();
 
