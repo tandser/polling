@@ -9,6 +9,7 @@ import java.util.List;
 
 import static ru.tandser.polling.repository.predicate.EstablishmentPredicates.whereId;
 import static ru.tandser.polling.util.Inspector.requireExist;
+import static ru.tandser.polling.util.Inspector.requireUpdate;
 
 @Service
 public class EstablishmentServiceImpl implements EstablishmentService {
@@ -37,21 +38,21 @@ public class EstablishmentServiceImpl implements EstablishmentService {
 
     @Override
     public void remove(int id) {
-
+        requireExist(establishmentRepository.remove(id));
     }
 
     @Override
     public Establishment save(Establishment establishment) {
-        return null;
+        return establishmentRepository.put(establishment);
     }
 
     @Override
     public void update(Establishment establishment) {
-
+        requireExist(establishmentRepository.put(establishment));
     }
 
     @Override
     public void toggle(int id, boolean state) {
-
+        requireUpdate(establishmentRepository.toggle(id, state));
     }
 }
