@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
+import static java.lang.Boolean.TRUE;
+import static java.time.LocalDateTime.now;
 
 @MappedSuperclass
 public abstract class AbstractEntity implements Persistable<Integer> {
@@ -61,6 +63,13 @@ public abstract class AbstractEntity implements Persistable<Integer> {
     @Transient
     public boolean isNew() {
         return getId() == null;
+    }
+
+    @PreUpdate
+    @PrePersist
+    public void prepare() {
+        if (getCreated() == null) setCreated(now());
+        if (getEnabled() == null) setEnabled(TRUE);
     }
 
     @Override

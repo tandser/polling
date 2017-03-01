@@ -55,13 +55,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User save(User user) {
-        user.prepare(passwordEncoder);
+        encodePassword(user);
         return userRepository.put(user);
     }
 
     @Override
     public void update(User user) {
-        user.prepare(passwordEncoder);
+        encodePassword(user);
         requireExist(userRepository.put(user));
     }
 
@@ -79,5 +79,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
 
         return new Principal(user);
+    }
+
+    private void encodePassword(User user) {
+        if (user != null && user.getPassword() != null) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
     }
 }
