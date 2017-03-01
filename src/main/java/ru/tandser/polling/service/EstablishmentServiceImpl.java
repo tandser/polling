@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.tandser.polling.domain.Establishment;
 import ru.tandser.polling.repository.EstablishmentRepository;
-import ru.tandser.polling.repository.predicate.EstablishmentPredicates;
-import ru.tandser.polling.util.Inspector;
 
 import java.util.List;
 
@@ -29,12 +27,12 @@ public class EstablishmentServiceImpl implements EstablishmentService {
 
     @Override
     public List<Establishment> getAll() {
-        return null;
+        return establishmentRepository.getAll(null);
     }
 
     @Override
     public Establishment getWithDetails(int id) {
-        return null;
+        return requireExist(establishmentRepository.getWithDetails(id));
     }
 
     @Override

@@ -26,11 +26,11 @@ public class User extends AbstractEntity {
 
     public static final String WITH_DETAILS = "User.withDetails";
 
-    private String        name;
-    private String        email;
-    private String        password;
-    private Role          role;
-    private List<Vote>    votes;
+    private String     name;
+    private String     email;
+    private String     password;
+    private Role       role;
+    private List<Vote> votes;
 
     public enum Role implements GrantedAuthority {
         ADMIN, USER;
