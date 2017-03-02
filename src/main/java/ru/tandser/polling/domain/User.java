@@ -86,6 +86,7 @@ public class User extends AbstractEntity {
         this.password = password;
     }
 
+    @NotNull
     @Enumerated(STRING)
     @Column(name = "role")
     public Role getRole() {
