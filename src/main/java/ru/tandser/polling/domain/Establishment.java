@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -71,6 +72,7 @@ public class Establishment extends AbstractEntity {
         this.phone = phone;
     }
 
+    @NotNull
     @URL
     @Column(name = "website")
     public String getWebsite() {
