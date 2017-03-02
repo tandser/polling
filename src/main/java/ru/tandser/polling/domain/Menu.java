@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static com.google.common.base.MoreObjects.toStringHelper;
 import static javax.persistence.FetchType.LAZY;
 
@@ -90,6 +91,7 @@ public class Menu extends AbstractEntity {
         this.price = price;
     }
 
+    @JsonInclude(NON_EMPTY)
     @NotNull
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "establishment_id")
