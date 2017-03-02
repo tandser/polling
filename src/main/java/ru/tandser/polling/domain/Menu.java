@@ -1,7 +1,6 @@
 package ru.tandser.polling.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -9,8 +8,6 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static com.google.common.base.MoreObjects.toStringHelper;
 import static javax.persistence.FetchType.LAZY;
 
@@ -91,7 +88,6 @@ public class Menu extends AbstractEntity {
         this.price = price;
     }
 
-    @JsonInclude(NON_EMPTY)
     @NotNull
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "establishment_id")
@@ -103,7 +99,6 @@ public class Menu extends AbstractEntity {
         this.establishment = establishment;
     }
 
-    @JsonInclude(NON_EMPTY)
     @OneToMany(mappedBy = "menu")
     public List<Vote> getVotes() {
         return votes;

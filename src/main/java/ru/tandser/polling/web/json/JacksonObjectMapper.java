@@ -14,7 +14,7 @@ public class JacksonObjectMapper extends ObjectMapper {
         registerModule(new Hibernate5Module());
         registerModule(new JavaTimeModule());
         configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-        setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
     }
 
     public static ObjectMapper getInstance() {

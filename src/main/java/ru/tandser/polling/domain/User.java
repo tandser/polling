@@ -1,7 +1,6 @@
 package ru.tandser.polling.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -13,7 +12,6 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
 import static com.google.common.base.MoreObjects.toStringHelper;
 import static javax.persistence.EnumType.STRING;
 
@@ -97,7 +95,6 @@ public class User extends AbstractEntity {
         this.role = role;
     }
 
-    @JsonInclude(NON_EMPTY)
     @OneToMany(mappedBy = "user")
     public List<Vote> getVotes() {
         return votes;
