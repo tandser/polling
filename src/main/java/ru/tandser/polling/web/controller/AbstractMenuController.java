@@ -23,4 +23,6 @@ public abstract class AbstractMenuController {
         log.info("{}: .get({})", principal.getUsername(), id);
         return menuService.get(id);
     }
+
+    // TODO: доработать
 }

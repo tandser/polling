@@ -20,4 +20,6 @@ public class MenuRestController extends AbstractMenuController {
     public Menu get(@PathVariable int id) {
         return super.get(id);
     }
+
+    // TODO: доработать
 }
